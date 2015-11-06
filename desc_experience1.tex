@@ -50,15 +50,24 @@
 		\end{center}
 	\textbf{Sub-Experience Five: Survivors in a Tournament.}\\
 	
+	
 		\begin{center}
 			\includegraphics[scale=.5]{e5.png}
 			\newline
 			\newline
 		\end{center}
 	\textbf{Sub-Experience Six: Better-Than-Good Will Hunting}\\
-		Verify that the graph G (below) has a diameter of 2.
-	
-		By using Lemma 2 we can prove that this graph does indeed have a diameter of 2.  
+		Verify that the graph G (below) has a diameter of 2.\\
+		
+		\noindent\textbf{Solution: }Using the given graph we make an adjacency matrix for all the vertices where <<CORRESPONDING VERTICES>>.  In meeting 25 we discussed that the power of an adjacency matrix theorem A: \emph{Suppose $G$ is a graph and $V(G) = \{v_{1}, v_{2}, ..., v_{n}\}$.  Then if $A$ is the adjacency matrix of $G$, entry $(i, j)$ in $A^{k}$ is the number of walks of length $k$ from $v_{i}$ to $v_{j}$.}.  The adjacenty matrix of this graph $G$ is  \\\\
+		\includegraphics[scale=.64]{Math3310_Prob6.PNG} \\
+		
+		\noindent Therefore if we are to calculate $a^{2}$ we would get\\
+		
+		\noindent\includegraphics[scale=.64]{Math3310_Prob6-1.PNG}\\
+		
+		\noindent You can see that in matrix 2 all the cells that had a value of 0 in the first matrix now have a value equal to or greater than 1.  This means that there is a walk of 2 connecting any two nonadjacent vertices.  Therefore we can conclude that the maximum distance between any two vertices (aka the diameter) is 2.
+		
 		\begin{center}
 			\includegraphics[scale=.5]{e6.png}
 			\newline
