@@ -11,68 +11,71 @@
 \begin{document}
 	\maketitle
 	\textbf{Sub-Experience One: Fun and Games}\\
-		\begin{center}
-			Figure 1.\\
-			\includegraphics[scale=.5]{e1.png}
-			\newline
-			\newline
-		\end{center}
-		
+	\begin{center}
+		Figure 1.\\
+		\includegraphics[scale=.5]{e1.png}
+		\newline
+		\newline
+	\end{center}
+	
 	\textbf{Solution: }Player $A$ can always win if she employs a particular strategy for each move.  Let $G = (V, E)$ be a NIM graph where $x, y, z \in V$ ($V$ being the set of vertices in $G$) and $xy, yz, zx \in E$.  Assume that the graph never has the same number of edges between all vertices. The strategy that will be used is this: For each turn, player $A$ removes edges on one vertex such that $|xy| = |yz|$, $|yz| = |zx|$, and $|zx| = |xy|$, where $|E|$ is the number of edges between two vertices. Since the rule of the game is that the winner is the player who removes the last edge, we know that the winner is also the one who removes the second to last edge.  If that is the case, then the player who removes edge that breaks the cycle in the graph loses. The player that is forced to break the cycle is also the player who is forced to remove an edge such that either $|xy| = 1$, $|yz| = 1$, or $|zx| = 1$.  In order for player $A$ to force player $B$ to do that, player $A$ needs to force player $B$ to remove an edge from the pair of vertices with the minimum number of edges.  In order to do that, player $A$ needs to remove edges on every turn such that $|xy| = |yz|$, $|yz| = |zx|$, and $|zx| = |xy|$. Therefore, if the graph is such that $|xy| = |yz|$, $|yz| = |zx|$, and $|zx| = |xy|$, player $B$ is forced to remove edges until they break the cycle, and player $A$ will always win.\\
 	\newline
 	\textbf{Sub-Experience Two: The Binary Addressing Graph}
-		\begin{enumerate}
-			\item $|V(Q_n)| = 2^n$\\
-			\textbf{Solution: }Let $Q_{n}$ be the graph whose vertices are all the binary strings of length $n$, and a vertex can be represented as $\vec{v} = \{v_{1}, v_{2}, ..., v_{n}\}$.  We know that if the vertices in $Q_{n}$ are binary strings of length 1 there are only two different vertices: 0 and 1.  Now assume that the vertices in $Q_{n}$ are strings of length 2.  Again by nature of the binary number system there are two possibilities for the values of each digit, so for a binary string of length 2 there would be two possibilities of two possibilities, or $2*2=4$ or $2^{2}$ possibilities.  Therefore we see that $|V(Q_{2})| = 2^{2}$. By nature of the number of values in a binary digit there will always be two possibilities for each digit, so therefore $|V(Q_{2})|$ is $2 * 2$ $n$ times or $|V(Q_{n})|=2^{n}$
-			
-			\begin{center}
-				Figure 2.\\
-				\includegraphics[scale=.5]{2_1.png}
-			\end{center}
-			
-			Because this solution is looking for a binary power we can prove this with a Karnaugh Map (Figure 2) What this shows in the relation between the vertices.  If there is a relation then 1's will be adjacent to one another.  We can see that because the pattern is that is created by the Karnaugh map there can be no relations between vertices.
-			\item $Q_n$ is an n-regular graph: that is, $deg (\vec{v}) = n $ for each $\vec{v} \epsilon V(Q_n)$.
-			
-			\item[] By what whas stated in meeting 16, the degree of a graph is the number of edges that it has connected to it (or in other words the number of vertices of which it is directly adjacent to).  With this in mind we will look at the graph $Q_{n}$.  The graph $Q_{n}$ is a graph whose vertices are all the binary strings of length $n$ and vertices are adjacent if and only if they differ in exactly one bit.  Because vertices are only adjacent if and only if they differ in exactly one bit, the number of possibilities of vertices different from an arbitrary vertex $v_{n}\in Q_{n}$ is one for each digit in the vertex's binary string.  As an example without loss of generality, the vertex 00 is different by exactly one bit from 01 and 10 only in graph $Q_{2}$.  Since there are only $n$ different places in which a vertex in graph $Q_{n}$ can be different from another vertex by exactly one bit, and since we know by definition of graph $Q_{n}$ that every possible combination of bits is represented by a vertex, we therefore know that the graph $deg(Q_{n})=n$, and that $Q_{n}$ is a $n$-regular graph.
-			
-			\item $Q_n$ is \textit{bipartite}; that is, $V(Q_n)$ consists of two sets, say X and Y such that $X\cap Y = \varnothing$ and the only edges of $Q_n$ have one end-vertex in X and the other in Y (so X and Y induce graphs with no edges).\\
-			\begin{center}
-				Figure 3.\\
-				\includegraphics[scale=.5]{2_3.png}
-			\end{center}
-			
-			\textbf{Solution: }Assume $Q_{n}=(V, E)$ is a graph of binary strings with a length of 1 ($Q_{1}$), where $v_{1}, v_{2}$ are vertices in $Q_{1}$ and $\vec{v}_{1} = 0$ and $\vec{v}_{2} = 1$.  It is easy to see that $Q_{n}$ is bipartite in this case because the vertices differ by one (so $\vec{v}_{1}\vec{v}_{2}\in E$), so we can say that  $\vec{v}_{1}\in X$ and $\vec{v}_{2}\in Y$.  In order to convert $Q_{1}$ into a $Q_{2}$, $\vec{v}_{1}$ and $\vec{v}_{2}$ need to be converted to vertices with binary string length of 2.  This makes it so in $Q_{2}=(V, E)$, $V = \{\vec{v}_{1}, \vec{v}_{2}, \vec{v}_{3}, \vec{v}_{4}\}$ where $\vec{v}_{1}=00$, $\vec{v}_{2}=01$, $\vec{v}_{3}=10$, $\vec{v}_{4}=11$.  Notice that vertices $\vec{v}_{1}$ and $\vec{v}_{2}$ from $Q_{2}$ carry the same properties as $v_{1}$ and $v_{2}$ from $Q_{1}$, where $\vec{v}_{1}\vec{v}_{2}\in E$ (00 and 01 differ by 1).  Vertices $\vec{v}_{3}$ and $\vec{v}_{4}$ also carry that property (10 and 11 differ by 1), but $\vec{v}_{1}$ and $v_{3}$, and $\vec{v}_{2}$ and $v_{4}$ differ by 2.  We can also see that $Q_{2}$ is bipartite, where $\vec{v}_{1}, \vec{v}_{3}\in X$ and $\vec{v}_{2}, \vec{v}_{4}\in Y$.  When constructing graph $Q_{3}$ we can see that all the vertices where the most sigificant digit is 0 follow the same properties as $Q_{2}$, and the same properties also exist in all the vertices where the most significant digit is 1.  Since the only thing that changes between the vertices with the most significant digit of 1 and the most significant digit of 0.  (reference Figure 3.)\\
-			
-			\item $Q_n$ is Hamiltonian for $n \geq 2$.\\
-			\textbf{Solution: }\\
-			Because graph $Q_n$ is bipartite, there is an edge from every x to an edge in y and there is an edge from every y to an edge in x.  Because, there are n edges in $Q_n$ (we're going without a proof) any graph $Q_n$ is strongly connected.  It is Hamiltonian because every vertex has an equal amount of edges.\\
-			\textbf{Edges Solution: }\\
-			We have already proved that all tournaments are Hamiltonian. A strongly connected graph where each vertex has the same amount of edges has the same properties as a tournament, just without directed edges.\\
-		\end{enumerate}
-		
-		
-	\textbf{Sub-Experience Three: Space Station Problems}\\
-	
+	\begin{enumerate}
+		\item $|V(Q_n)| = 2^n$\\
+		\textbf{Solution: }Let $Q_{n}$ be the graph whose vertices are all the binary strings of length $n$, and a vertex can be represented as $\vec{v} = \{v_{1}, v_{2}, ..., v_{n}\}$.  We know that if the vertices in $Q_{n}$ are binary strings of length 1 there are only two different vertices: 0 and 1.  Now assume that the vertices in $Q_{n}$ are strings of length 2.  Again by nature of the binary number system there are two possibilities for the values of each digit, so for a binary string of length 2 there would be two possibilities of two possibilities, or $2*2=4$ or $2^{2}$ possibilities.  Therefore we see that $|V(Q_{2})| = 2^{2}$. By nature of the number of values in a binary digit there will always be two possibilities for each digit, so therefore $|V(Q_{2})|$ is $2 * 2$ $n$ times or $|V(Q_{n})|=2^{n}$\\
+		\newline			
 		\begin{center}
-			Figure 4.\\
-			\includegraphics[scale=.5]{e3.png}
-			\newline
-			\newline
+			Figure 2.\\
+			\includegraphics[scale=.5]{2_1.png}
 		\end{center}
 		
-		The coloring is important for this problem.  With the coloring we can see the pattern that is needed to know how many RE's are needed to guard a whole station.\\
+		Because this solution is looking for a binary power we can prove this with a Karnaugh Map (Figure 2) What this shows in the relation between the vertices.  If there is a relation then 1's will be adjacent to one another.  We can see that because the pattern is that is created by the Karnaugh map there can be no relations between vertices.\\
+		\pagebreak
+		\newline
+		\item $Q_n$ is an n-regular graph: that is, $deg (\vec{v}) = n $ for each $\vec{v} \epsilon V(Q_n)$.
 		
-		\textbf{Watched Eyes}\\
-		$gg(w) \leq \lfloor \frac{w}{3} \rfloor + \lfloor \frac{\frac{w}{3}}{2} \rfloor$\\
-		Using the coloring system we can it will guard the whole station.  To make sure that one RE will see another ER we will need a few additional REs.  If we add just 1 additional RE then it can cover 2 of the original REs (assuming that if 2 REs are not vertices of the same triangle they can't see each other). This is why we can use $+ \lfloor \frac{\frac{w}{3}}{2} \rfloor$ to calculate the additional REs needed.  
+		\textbf{Solution: }By what was stated in meeting 16, the degree of a graph is the number of edges that it has connected to it (or in other words the number of vertices of which it is directly adjacent to).  With this in mind we will look at the graph $Q_{n}$.  The graph $Q_{n}$ is a graph whose vertices are all the binary strings of length $n$ and vertices are adjacent if and only if they differ in exactly one bit.  Because vertices are only adjacent if and only if they differ in exactly one bit, the number of possibilities of vertices different from an arbitrary vertex $v_{n}\in Q_{n}$ is one for each digit in the vertex's binary string.  As an example without loss of generality, the vertex 00 is different by exactly one bit from 01 and 10 only in graph $Q_{2}$.  Since there are only $n$ different places in which a vertex in graph $Q_{n}$ can be different from another vertex by exactly one bit, and since we know by definition of graph $Q_{n}$ that every possible combination of bits is represented by a vertex, we therefore know that the graph $deg(Q_{n})=n$, and that $Q_{n}$ is a $n$-regular graph.
 		
-		\textbf{Rectangular Stations}\\
-		$where\ w\ >\ 6\ \Longrightarrow g\perp(w) \leq \lfloor \frac{w}{4} \rfloor$\\
-		Because walls (w) are $\perp$ to each other, w $\geq$ 4 and $w \subseteq 2\mathbb{N}$, there will always be an even number of walls.  Therefore for every additional 4 walls there will be 1 RE needed, hence $\lfloor \frac{w}{4} \rfloor$.\\
+		\item $Q_n$ is \textit{bipartite}; that is, $V(Q_n)$ consists of two sets, say X and Y such that $X\cap Y = \varnothing$ and the only edges of $Q_n$ have one end-vertex in X and the other in Y (so X and Y induce graphs with no edges).\\
 		
-		\textbf{Watched Eyes in Rectangular Stations}\\
-		\textbf{where w $>$ 6} $\Longrightarrow$  $gg\perp(w) \leq \lfloor \frac{w}{4} \rfloor + \lfloor \frac{\frac{w}{4}}{2} \rfloor$, \textbf{where w $\leq$ 6} $\Longrightarrow$ then $gg\perp(w) = 2$\\
+		\textbf{Solution: }Assume $Q_{n}=(V, E)$ is a graph of binary strings with a length of 1 ($Q_{1}$), where $v_{1}, v_{2}$ are vertices in $Q_{1}$ and $\vec{v}_{1} = 0$ and $\vec{v}_{2} = 1$.  It is easy to see that $Q_{n}$ is bipartite in this case because the vertices differ by one (so $\vec{v}_{1}\vec{v}_{2}\in E$), so we can say that  $\vec{v}_{1}\in X$ and $\vec{v}_{2}\in Y$.  In order to convert $Q_{1}$ into a $Q_{2}$, $\vec{v}_{1}$ and $\vec{v}_{2}$ need to be converted to vertices with binary string length of 2.  This makes it so in $Q_{2}=(V, E)$, $V = \{\vec{v}_{1}, \vec{v}_{2}, \vec{v}_{3}, \vec{v}_{4}\}$ where $\vec{v}_{1}=00$, $\vec{v}_{2}=01$, $\vec{v}_{3}=10$, $\vec{v}_{4}=11$.  Notice that vertices $\vec{v}_{1}$ and $\vec{v}_{2}$ from $Q_{2}$ carry the same properties as $v_{1}$ and $v_{2}$ from $Q_{1}$, where $\vec{v}_{1}\vec{v}_{2}\in E$ (00 and 01 differ by 1).  Vertices $\vec{v}_{3}$ and $\vec{v}_{4}$ also carry that property (10 and 11 differ by 1), but $\vec{v}_{1}$ and $v_{3}$, and $\vec{v}_{2}$ and $v_{4}$ differ by 2.  We can also see that $Q_{2}$ is bipartite, where $\vec{v}_{1}, \vec{v}_{3}\in X$ and $\vec{v}_{2}, \vec{v}_{4}\in Y$.  When constructing graph $Q_{3}$ we can see that all the vertices where the most sigificant digit is 0 follow the same properties as $Q_{2}$, and the same properties also exist in all the vertices where the most significant digit is 1.  Since the only thing that changes between the vertices with the most significant digit of 1 and the most significant digit of 0.  (reference Figure 3.)\\
+		\begin{center}
+			Figure 3.\\
+			\includegraphics[scale=.5]{2_3.png}
+		\end{center}
 		
+		\item $Q_n$ is Hamiltonian for $n \geq 2$.\\
+		\textbf{Solution: }\\
+		Because graph $Q_n$ is bipartite, there is an edge from every x to an edge in y and there is an edge from every y to an edge in x.  Because, there are n edges in $Q_n$ (we're going without a proof) any graph $Q_n$ is strongly connected.  It is Hamiltonian because every vertex has an equal amount of edges.\\
+		\textbf{Edges Solution: }\\
+		We have already proved that all tournaments are Hamiltonian. A strongly connected graph where each vertex has the same amount of edges has the same properties as a tournament, just without directed edges.\\
+	\end{enumerate}
+	\pagebreak
+	\textbf{Sub-Experience Three: Space Station Problems}\\
+	
+	\begin{center}
+		Figure 4.\\
+		\includegraphics[scale=.5]{e3.png}
+		\newline
+		\newline
+	\end{center}
+	
+	The coloring is important for this problem.  With the coloring we can see the pattern that is needed to know how many RE's are needed to guard a whole station.\\
+	
+	\textbf{Watched Eyes}\\
+	$gg(w) \leq \lfloor \frac{w}{3} \rfloor + \lfloor \frac{\frac{w}{3}}{2} \rfloor$\\
+	Using the coloring system we can it will guard the whole station.  To make sure that one RE will see another ER we will need a few additional REs.  If we add just 1 additional RE then it can cover 2 of the original REs (assuming that if 2 REs are not vertices of the same triangle they can't see each other). This is why we can use $+ \lfloor \frac{\frac{w}{3}}{2} \rfloor$ to calculate the additional REs needed.  
+	
+	\textbf{Rectangular Stations}\\
+	$where\ w\ >\ 6\ \Longrightarrow g\perp(w) \leq \lfloor \frac{w}{4} \rfloor$\\
+	Because walls (w) are $\perp$ to each other, w $\geq$ 4 and $w \subseteq 2\mathbb{N}$, there will always be an even number of walls.  Therefore for every additional 4 walls there will be 1 RE needed, hence $\lfloor \frac{w}{4} \rfloor$.\\
+	
+	\textbf{Watched Eyes in Rectangular Stations}\\
+	\textbf{where w $>$ 6} $\Longrightarrow$  $gg\perp(w) \leq \lfloor \frac{w}{4} \rfloor + \lfloor \frac{\frac{w}{4}}{2} \rfloor$, \textbf{where w $\leq$ 6} $\Longrightarrow$ then $gg\perp(w) = 2$\\
+	Assuming the equation $g\perp(w) \leq \lfloor \frac{w}{4}\rfloor $ insures that the rectangular station is protected.  For every two REs we will need one additional RE.  This gives us the equations $gg\perp(w) \leq \lfloor \frac{w}{4} \rfloor + \lfloor \frac{\frac{w}{4}}{2} \rfloor$, assume this equation works for all circumstances depending on RE position. 
+	\pagebreak
+	\newline
 	\textbf{Sub-Experience Four: Regions Determined by Chords of a Circle}\\
 	
 	\noindent\textbf{Solution: }Let $G$ represent a circle with $n$ vertices in $G$.  Let $C$ represent the chords made by connecting any two vertices.  The spot where any two chords intersect in $G$ is an intersection point $I$, and these points are made up of only two chords.  The chords and possibly segments of the circle create boundaries for regions $R$ in $G$.\\
@@ -80,71 +83,72 @@
 	\begin{center}
 		Figure 5.\\
 		\begin{tabular}{c|c c c c c c c c c}
-		n & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8\\
-	\hline
-	\hline
-		L & 0 & 0 & 1 & 3 & 6 & 10 & 15 & 21 & 28\\
-		I & 0 & 0 & 0 & 0 & 1 & 5 & 15 & 35 & 70\\
-		R & 1 & 1 & 2 & 4 & 8 & 16 & 31 & 57 & 99\\
+			n & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8\\
+			\hline
+			\hline
+			L & 0 & 0 & 1 & 3 & 6 & 10 & 15 & 21 & 28\\
+			I & 0 & 0 & 0 & 0 & 1 & 5 & 15 & 35 & 70\\
+			R & 1 & 1 & 2 & 4 & 8 & 16 & 31 & 57 & 99\\
 		\end{tabular}
 	\end{center}
-
+	
 	\noindent If we let $A(n)=L$, where $A(n)$ is a function of $n$, then we can also say that $L=A(n-1)+(n-1)$.  To find the number of intersection points using Pascal's triangle we can see a pattern:\\
 	
 	\noindent This pattern can be defined as $I=\frac{n(n-1)(n-2)(n-3)}{24}$.  This means therefore that $R(n)=(A(n-1)+(n-1))+\frac{n(n-1)(n-2)(n-3)}{24}+1$.
 	
-		\begin{center}
-			%\includegraphics[scale=.5]{.png}
-	
-		\end{center}
+	\begin{center}
+		%\includegraphics[scale=.5]{.png}
+		
+	\end{center}
 	\textbf{Sub-Experience Five: Survivors in a Tournament.}\\
-		As we look at Figure 6. This is the best way to explain how to prove this.  If we start making queens of 7 in the tournament (which is the least amount that any vertex can have to win) and work CW we end up with 3 queens. Now if we to to our original starting vertex and work CCW we find 2 more queens of 7.  We then end up with 5 queens after the first round.  Therefore, the max number of teams that will remain after the first elimination round will be 5.\\
+	As we look at Figure 6. This is the best way to explain how to prove this.  If we start making queens of 7 in the tournament (which is the least amount that any vertex can have to win) and work CW we end up with 3 queens. Now if we to to our original starting vertex and work CCW we find 2 more queens of 7.  We then end up with 5 queens after the first round.  Therefore, the max number of teams that will remain after the first elimination round will be 5.\\
+	\newline
+	For the second round if we keep the same pattern but with queens of 3 (which is the "majority" number to win) We will find that there ends up being 3 queens.Therefore, the max number of teams that will remain after the second round will be 3.\\
+	\begin{center}
+		Figure 6.\\
+		\includegraphics[scale=.5]{e5.png}
 		\newline
-		For the second round if we keep the same pattern but with queens of 3 (which is the "majority" number to win) We will find that there ends up being 3 queens.Therefore, the max number of teams that will remain after the second round will be 3.\\
-		\begin{center}
-			Figure 6.\\
-			\includegraphics[scale=.5]{e5.png}
-			\newline
-			\newline
-		\end{center}
+		\newline
+	\end{center}
+	\pagebreak
 	\textbf{Sub-Experience Six: Better-Than-Good Will Hunting}\\
-		Verify that the graph G (below) has a diameter of 2.\\
-		
-		\noindent\textbf{Solution: }Using the given graph we make an adjacency matrix for all the vertices where CORRESPONDING VERTICES.  In meeting 25 we discussed that the power of an adjacency matrix theorem A: \emph{Suppose $G$ is a graph and $V(G) = \{v_{1}, v_{2}, ..., v_{n}\}$.  Then if $A$ is the adjacency matrix of $G$, entry $(i, j)$ in $A^{k}$ is the number of walks of length $k$ from $v_{i}$ to $v_{j}$.}.  The adjacenty matrix of this graph $G$ is  \\\\
-		\begin{center}
-			Figure 7.\\
-			\includegraphics[scale=.64]{Math3310_Prob6.PNG} \\
-		\end{center}
-		
-		\noindent Therefore if we are to calculate $a^{2}$ we would get\\
-		
-		\begin{center}
-			Figure 8.\\
-			\noindent\includegraphics[scale=.64]{Math3310_Prob6-1.PNG}\\
-		\end{center}
-		
-		\noindent You can see that in matrix 2 all the cells that had a value of 0 in the first matrix now have a value equal to or greater than 1.  This means that there is a walk of 2 connecting any two nonadjacent vertices.  Therefore we can conclude that the maximum distance between any two vertices (aka the diameter) is 2.
-		
-		\begin{center}
-			Figure 9.\\
-			\includegraphics[scale=.5]{e6.png}
-			\newline
-			\newline
-		\end{center}
+	Verify that the graph G (below) has a diameter of 2.\\
+	
+	\noindent\textbf{Solution: }Using the given graph we make an adjacency matrix for all the vertices where CORRESPONDING VERTICES.  In meeting 25 we discussed that the power of an adjacency matrix theorem A: \emph{Suppose $G$ is a graph and $V(G) = \{v_{1}, v_{2}, ..., v_{n}\}$.  Then if $A$ is the adjacency matrix of $G$, entry $(i, j)$ in $A^{k}$ is the number of walks of length $k$ from $v_{i}$ to $v_{j}$.}.  The adjacenty matrix of this graph $G$ is  \\\\
+	\begin{center}
+		Figure 7.\\
+		\includegraphics[scale=.64]{Math3310_Prob6.PNG} \\
+	\end{center}
+	
+	\noindent Therefore if we are to calculate $a^{2}$ we would get\\
+	
+	\begin{center}
+		Figure 8.\\
+		\noindent\includegraphics[scale=.64]{Math3310_Prob6-1.PNG}\\
+	\end{center}
+	
+	\noindent You can see that in matrix 2 all the cells that had a value of 0 in the first matrix now have a value equal to or greater than 1.  This means that there is a walk of 2 connecting any two nonadjacent vertices.  Therefore we can conclude that the maximum distance between any two vertices (aka the diameter) is 2.
+	
+	\begin{center}
+		Figure 9.\\
+		\includegraphics[scale=.5]{e6.png}
+		\newline
+		\newline
+	\end{center}
 	\textbf{[Bonus] Sub-Experience Seven: A Matter of Life and Death}\\	
-		$n = 2^m + k$\\
-		$w = 2k + 1$\\
-		\textbf{w} = number of people in the group.\\
-		\textbf{m} = the greatest exp. that can be without going over the \# of people with $(2^m)$ for example if w = 7 then m = 2 because $2^2 = 4$ if m = 3 then $7 = 2^3 = 8$ and it goes over the amount of people in the group.\\
-		\textbf{k} = constant\\
-		\textbf{n} = the spot that we want to stand not to die!\\
-		\newline
-		As we work through these formulas.  The 2nd formula is the first formula we need to look at.  It helps us find the k for the 1st formula.  Once we have that we can then find the exact spot we need to stand.\\
-		\newline
-		We can then plugin numbers now, if we have 13 people in the group.\\
-		$13 = 2k + 1$ $k = 6$  Then $m = 3$ and $n = 2^3 + 6$ When will then need to stand in spot 14 in order not to die!
-		\begin{center}
-			%\includegraphics[scale=.5]{.png}
-
-		\end{center}
+	$n = 2^m + k$\\
+	$w = 2k + 1$\\
+	\textbf{w} = number of people in the group.\\
+	\textbf{m} = the greatest exp. that can be without going over the \# of people with $(2^m)$ for example if w = 7 then m = 2 because $2^2 = 4$ if m = 3 then $7 = 2^3 = 8$ and it goes over the amount of people in the group.\\
+	\textbf{k} = constant\\
+	\textbf{n} = the spot that we want to stand not to die!\\
+	\newline
+	As we work through these formulas.  The 2nd formula is the first formula we need to look at.  It helps us find the k for the 1st formula.  Once we have that we can then find the exact spot we need to stand.\\
+	\newline
+	We can then plugin numbers now, if we have 13 people in the group.\\
+	$13 = 2k + 1$ $k = 6$  Then $m = 3$ and $n = 2^3 + 6$ When will then need to stand in spot 14 in order not to die!
+	\begin{center}
+		%\includegraphics[scale=.5]{.png}
+		
+	\end{center}
 \end{document}
