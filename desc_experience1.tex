@@ -33,7 +33,7 @@
 			\item $Q_n$ is an n-regular graph: that is, $deg (\vec{v}) = n $ for each $\vec{v} \epsilon V(Q_n)$.
 			\item $Q_n$ is \textit{bipartite}; that is, $V(Q_n)$ consists of two sets, say X and Y such that $X\cap Y = \varnothing$ and the only edges of $Q_n$ have one end-vertex in X and the other in Y (so X and Y induce graphs with no edges).
 			
-			\item[]\textbf{Solution: }Assume each vertex in $Q_{n}$ is a binary string of length 1.  It is easy to see that $Q_{n}$ is bipartite in this case because the vertices differ by one digit.  Now if we are to assume that each vertex in $Q_{n}$ is a binary string of length 2, 
+			\item[]\textbf{Solution: }Assume $Q_{n}=(V, E)$ is a graph of binary strings with a length of 1 ($Q_{1}$), where $v_{1}, v_{2}$ are vertices in $Q_{1}$ and $\vec{v}_{1} = 0$ and $\vec{v}_{2} = 1$.  It is easy to see that $Q_{n}$ is bipartite in this case because the vertices differ by one one (so $\vec{v}_{1}\vec{v}_{2}\in E$), so we can say that  $\vec{v}_{1}\in X$ and $\vec{v}_{2}\in Y$.  In order to convert $Q_{1}$ into a $Q_{2}$, $\vec{v}_{1}$ and $\vec{v}_{2}$ need to be converted to vertices with binary string length of 2.  This makes it so in $Q_{2}=(V, E)$, $V = \{\vec{v}_{1}, \vec{v}_{2}, \vec{v}_{3}, \vec{v}_{4}\}$ where $\vec{v}_{1}=00$, $\vec{v}_{2}=01$, $\vec{v}_{3}=10$, $\vec{v}_{4}=11$.  Notice that vertices $\vec{v}_{1}$ and $\vec{v}_{2}$ from $Q_{2}$ carry the same properties as $v_{1}$ and $v_{2}$ from $Q_{1}$, where $\vec{v}_{1}\vec{v}_{2}\in E$ (00 and 01 differ by 1).  Vertices $\vec{v}_{3}$ and $\vec{v}_{4}$ also carry that property (10 and 11 differ by 1), but $\vec{v}_{1}$ and $v_{3}$, and $\vec{v}_{2}$ and $v_{4}$ differ by 2.  We can also see that $Q_{2}$ is bipartite, where $\vec{v}_{1}, \vec{v}_{3}\in X$ and $\vec{v}_{2}, \vec{v}_{4}\in Y$.  When constructing graph $Q_{3}$ we can see that all the vertices where the most sigificant digit is 0 follow the same properties as $Q_{2}$, and the same properties also exist in all the vertices where the most significant digit is 1.  Since the only thing that changes between the vertices with the most significant digit of 1 and the most significant digit of 0
 			
 			\item $Q_n$ is Hamiltonian for $n \geq 2$.
 		\end{enumerate}
@@ -48,6 +48,21 @@
 			\newline
 		\end{center}
 	\textbf{Sub-Experience Four: Regions Determined by Chords of a Circle}\\
+	
+	\noindent\textbf{Solution: }Let $G$ represent a circle with $n$ vertices in $G$.  Let $C$ represent the chords made by connecting any two vertices.  The spot where any two chords intersect in $G$ is an intersection point $I$, and these points are made up of only two chords.  The chords and possibly segments of the circle create boundaries for regions $R$ in $G$.\\
+	
+	\begin{center}\begin{tabular}{c|c c c c c c c c c}
+	n & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8\\
+\hline
+\hline
+	L & 0 & 0 & 1 & 3 & 6 & 10 & 15 & 21 & 28\\
+	I & 0 & 0 & 0 & 0 & 1 & 5 & 15 & 35 & 70\\
+	R & 1 & 1 & 2 & 4 & 8 & 16 & 31 & 57 & 99\\
+\end{tabular}\end{center}
+
+	\noindent If we let $A(n)=L$, where $A(n)$ is a function of $n$, then we can also say that $L=A(n-1)+(n-1)$.  To find the number of intersection points using Pascal's triangle we can see a pattern:\\
+	
+	\noindent This pattern can be defined as $I=\frac{n(n-1)(n-2)(n-3)}{24}$.  This means therefore that $R(n)=(A(n-1)+(n-1))+\frac{n(n-1)(n-2)(n-3)}{24}+1$.
 	
 		\begin{center}
 			%\includegraphics[scale=.5]{.png}
@@ -66,7 +81,7 @@
 	\textbf{Sub-Experience Six: Better-Than-Good Will Hunting}\\
 		Verify that the graph G (below) has a diameter of 2.\\
 		
-		\noindent\textbf{Solution: }Using the given graph we make an adjacency matrix for all the vertices where <<CORRESPONDING VERTICES>>.  In meeting 25 we discussed that the power of an adjacency matrix theorem A: \emph{Suppose $G$ is a graph and $V(G) = \{v_{1}, v_{2}, ..., v_{n}\}$.  Then if $A$ is the adjacency matrix of $G$, entry $(i, j)$ in $A^{k}$ is the number of walks of length $k$ from $v_{i}$ to $v_{j}$.}.  The adjacenty matrix of this graph $G$ is  \\\\
+		\noindent\textbf{Solution: }Using the given graph we make an adjacency matrix for all the vertices where CORRESPONDING VERTICES.  In meeting 25 we discussed that the power of an adjacency matrix theorem A: \emph{Suppose $G$ is a graph and $V(G) = \{v_{1}, v_{2}, ..., v_{n}\}$.  Then if $A$ is the adjacency matrix of $G$, entry $(i, j)$ in $A^{k}$ is the number of walks of length $k$ from $v_{i}$ to $v_{j}$.}.  The adjacenty matrix of this graph $G$ is  \\\\
 		\includegraphics[scale=.64]{Math3310_Prob6.PNG} \\
 		
 		\noindent Therefore if we are to calculate $a^{2}$ we would get\\
